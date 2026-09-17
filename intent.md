@@ -36,9 +36,9 @@ I identified three realistic failure classes in the fictional settlement service
 |-----------|-------|-------|
 | User impact | 3 | Affects users who complete tasks at midnight exactly — uncommon but deterministic |
 | Frequency / Likelihood | 3 | Happens every week for any task at exact midnight |
-| Effort to detect without tests | 4 | Off-by-one — easy to miss in code review |
-| Effort to fix | 1 | Single operator change in SQL query |
-| **Total** | **11/20** | **Ranked 2nd** |
+| Effort to detect without tests | 5 | Off-by-one — easy to miss in code review |
+| Effort to fix | 2 | Single operator change in SQL query |
+| **Total** | **13/20** | **Ranked 2nd** |
 
 ### Problem 3: Notification Failure Rolls Back Payout
 **Description:** If the notification HTTP call fails (timeout/500), the code rolls back the entire database transaction — user loses credits even though they completed the task.
@@ -46,10 +46,10 @@ I identified three realistic failure classes in the fictional settlement service
 | Dimension | Score | Notes |
 |-----------|-------|-------|
 | User impact | 4 | Users lose earned credits due to an unrelated notification failure |
-| Frequency / Likelihood | 3 | Depends on notification service stability — less common than DB retries |
+| Frequency / Likelihood | 2 | Depends on notification service stability — less common than DB retries |
 | Effort to detect without tests | 3 | Requires end-to-end test with notification failure injection |
 | Effort to fix | 3 | Requires decoupling notification from payout transaction |
-| **Total** | **13/20** | **Ranked 3rd** |
+| **Total** | **12/20** | **Ranked 3rd** |
 
 ---
 

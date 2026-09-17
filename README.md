@@ -2,7 +2,17 @@
 
 **Author:** Md. Mujahidul Islam  
 **Role Applied For:** AI-Native Product QA Engineer — MUST Company  
-**Quest:** Prevent a Recurring Business-Flow Failure
+**Quest:** Prevent a Recurring Business-Flow Failure  
+**Status:** Complete & Runnable
+
+---
+
+## Deliverables Quick Links
+* **Loom Video Demo (5 min max):** [Loom Submission Link](https://www.loom.com/share/6c2a04c454494fe9840c41a92af49ee4)
+* **Problem Selection Rationale:** [`intent.md`](./intent.md)
+* **Working Instructions & Release Gates:** [`directive.md`](./directive.md)
+* **Actionable Defect Report:** [`reports/defect_report.md`](./reports/defect_report.md)
+* **Release Readiness Checklist:** [`reports/release_readiness_checklist.md`](./reports/release_readiness_checklist.md)
 
 ---
 
@@ -42,6 +52,8 @@ quest-settlement-qa/
 **Requirements:** Python 3.11+
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/MUJAHID-WEB/quest-settlement-qa.git
 cd quest-settlement-qa
 
 # Create and activate a virtual environment (required on macOS with Homebrew Python)
@@ -49,8 +61,17 @@ python3 -m venv .venv
 source .venv/bin/activate      # macOS / Linux
 # .venv\Scripts\activate       # Windows
 
-# Install dependencies
+# 2. Install dependencies (Python 3.11+ required)
 pip install -r requirements.txt
+
+# 3. See the bug: TC-06 xfail tests confirm duplicate payouts on retry
+pytest tests/test_settlement_buggy.py -v
+
+# 4. See the fix: all 10 test cases pass against fixed service
+pytest tests/test_settlement_fixed.py -v
+
+# 5. Generate HTML report
+pytest tests/ -v --html=reports/test_run_report.html --self-contained-html
 ```
 
 ---
@@ -103,7 +124,7 @@ pytest tests/ -v --html=reports/test_run_report.html --self-contained-html
 
 ## AI Usage Declaration
 
-- AI (Claude) assisted in scaffolding boilerplate DB setup, generating test case matrix, and reviewing edge-case coverage
+- AI assisted in scaffolding boilerplate DB setup, generating test case matrix, and reviewing edge-case coverage
 - All business rule translations, severity judgments, and the idempotency fix design were authored and verified by the candidate
 - The buggy vs. fixed service contrast was personally designed to demonstrate a realistic regression scenario
 - All test assertions were reviewed manually for correctness against the stated business rules

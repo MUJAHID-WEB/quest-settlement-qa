@@ -120,7 +120,7 @@ quest-settlement-qa/
 
 ### Setup
 ```bash
-git clone <YOUR_GITHUB_REPO_URL>
+git clone https://github.com/MUJAHID-WEB/quest-settlement-qa.git
 cd quest-settlement-qa
 
 # Create and activate a virtual environment (required on macOS with Homebrew Python)
@@ -208,15 +208,14 @@ The fixed service passes all gates. The buggy service fails RR-07, RR-08, and RR
 | Defect report DR-001 | `reports/defect_report.md` |
 | Release readiness checklist | `reports/release_readiness_checklist.md` |
 | intent.md | `intent.md` |
-| Loom video | [Loom link — add before submission] |
+| Loom video | [https://www.loom.com/share/6c2a04c454494fe9840c41a92af49ee4] |
 
-> **Before submitting:** Add your GitHub repo URL above and verify all links open without login.
 
 ### Reproduction Steps for Reviewer
 
 ```bash
 # 1. Clone the repository
-git clone <YOUR_GITHUB_REPO_URL>
+git clone https://github.com/MUJAHID-WEB/quest-settlement-qa.git
 cd quest-settlement-qa
 
 # 2. Install dependencies (Python 3.11+ required)

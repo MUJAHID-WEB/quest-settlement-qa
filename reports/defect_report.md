@@ -15,7 +15,7 @@
 | **Priority** | P1 |
 | **Component** | Settlement Service / Payout Engine |
 | **Reported By** | Md. Mujahidul Islam (QA) |
-| **Date** | 2024-01-15 |
+| **Date** | 2026-09-18 |
 | **Status** | Fixed (regression test added) |
 
 ---
@@ -51,7 +51,7 @@ The settlement window runs every **Tuesday at 09:00 UTC** for tasks completed in
 
 ### Prerequisites
 ```bash
-git clone <repo-url>
+git clone https://github.com/MUJAHID-WEB/quest-settlement-qa.git
 cd quest-settlement-qa
 pip install -r requirements.txt
 ```
@@ -111,7 +111,7 @@ pytest tests/test_settlement_fixed.py -v
 The `run_settlement` function does **not check** whether a payout already exists for a given `(task_id, settlement_window_start)` pair before inserting a new row. It unconditionally executes:
 
 ```python
-# BUGGY CODE (settlement_service_buggy.py, line ~68)
+# BUGGY CODE (settlement_service_buggy.py, line ~94)
 conn.execute(
     "INSERT INTO payouts (task_id, user_id, settlement_window_start, credits, paid_at) VALUES (?, ?, ?, ?, ?)",
     (task_id, user_id, ws, CREDITS_PER_TASK, paid_at),
